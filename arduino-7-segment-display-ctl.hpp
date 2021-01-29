@@ -37,7 +37,7 @@ class _7SegmentDisplay{
     
     void setPins();
     
-    static const bool sd7_num[10][7]{
+    constexpr bool sd7_num[10][7]{
       {HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, LOW},  //0
       {LOW, HIGH, HIGH, LOW, LOW, LOW, LOW},      //1
       {HIGH, HIGH, LOW, HIGH, HIGH, LOW, HIGH},   //2
@@ -54,7 +54,7 @@ class _7SegmentDisplay{
 class _2x7SegmentDisplay : private _7SegmentDisplay {
   public:
     _2x7SegmentDisplay(byte a, byte b, byte c, byte d, byte e, byte f, byte g, bool lowDriven = false) 
-      : SegmentDisplay7{a, b, c, d, e, f, g, lowDriven}
+      :_7SegmentDisplay{a, b, c, d, e, f, g, lowDriven}
       {}
 
     inline void Set(int num){
