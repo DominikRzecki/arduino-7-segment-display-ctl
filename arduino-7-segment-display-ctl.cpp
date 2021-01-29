@@ -19,9 +19,9 @@
 
  
 
-#include "arduino-7-segment-display-ctl.hpp"
+#include "arduino-7-segment-display-ctl.h"
 
-_7SegmentDisplay::_7SegmentDisplay(byte a, byte b, byte c, byte d, byte e, byte f, byte g, bool lowDriven = false){
+_7SegmentDisplay::_7SegmentDisplay(byte a, byte b, byte c, byte d, byte e, byte f, byte g, bool lowDriven){
 	sd7_pins[0] = a;
 	sd7_pins[1] = b;
 	sd7_pins[2] = c;
@@ -70,16 +70,20 @@ void _7SegmentDisplay::setPins(){
 	}
 }
 
+_2x7SegmentDisplay::_2x7SegmentDisplay(byte a, byte b, byte c, byte d, byte e, byte f, byte g, bool lowDriven)
+	:_7SegmentDisplay{a, b, c, d, e, f, g, lowDriven}
+{}
+
 void _2x7SegmentDisplay::Update(){
-      if(m_num != -1){
-        m_digit[0] = (m_num < 10)? 0 : m_num/10;
-        m_digit[1] = m_num%10;
-      }
+	if(m_num != -1){
+		m_digit[0] = (m_num < 10)? 0 : m_num/10;
+		m_digit[1] = m_num%10;
+	}
   
-      digitalWrite(13 - m_whichDigit, HIGH);
-      digitalWrite(13 - !m_whichDigit, LOW);
+	digitalWrite(13 - m_whichDigit, HIGH);
+	digitalWrite(13 - !m_whichDigit, LOW);
 
-      Display(m_digit[m_whichDigit]);
+	Display(m_digit[m_whichDigit]);
 
-      m_whichDigit = !m_whichDigit;
-    }
+	m_whichDigit = !m_whichDigit;
+}

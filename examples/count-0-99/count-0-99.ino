@@ -23,16 +23,19 @@
 
 void setup() {
 	pinMode(12, OUTPUT);
-	digitalWrite(12, HIGH);
+	pinMode(13, OUTPUT);
 }
 
 void loop() {
-  _7SegmentDisplay display{5, 2, 6, 8, 7, 3, 4, true};
+  _2x7SegmentDisplay display{5, 2, 6, 8, 7, 3, 4, true};
   
-  for(int i = 0; i<10; i++) {
-  	display.Display(i);
-  	if ( i == 9)
+  for(int i = 0; i<100; i++) {
+  	display.Set(i);
+  	for (int i = 0; i < 100; i++){
+  		display.Update();
+      delay(10);
+  	}
+  	if ( i == 99)
   		i = 0;
-  	delay(500);
   }
 }
