@@ -17,7 +17,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#pragma once
+#ifndef _7_SEGMENT_DISPLAY
+#define _7_SEGMENT_DISPLAY
 
 #include <Arduino.h>
 
@@ -65,3 +66,5 @@ class _2x7SegmentDisplay : private _7SegmentDisplay {
     int m_num;
     short int m_digit[2];
 };
+
+#endif
