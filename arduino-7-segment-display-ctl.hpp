@@ -37,7 +37,7 @@ class _7SegmentDisplay{
     
     void setPins();
     
-    constexpr bool sd7_num[10][7]{
+    static constexpr bool sd7_num[10][7]{
       {HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, LOW},  //0
       {LOW, HIGH, HIGH, LOW, LOW, LOW, LOW},      //1
       {HIGH, HIGH, LOW, HIGH, HIGH, LOW, HIGH},   //2
