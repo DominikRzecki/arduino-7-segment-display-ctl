@@ -67,4 +67,4 @@ class _2x7SegmentDisplay : private _7SegmentDisplay {
     short int m_digit[2];
 };
 
-#endif
+#endif //_7_SEGMENT_DISPLAY
